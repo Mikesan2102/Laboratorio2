@@ -142,7 +142,7 @@ namespace Lab2
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(341, 58);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(447, 177);
+            this.dataGridView1.Size = new System.Drawing.Size(861, 177);
             this.dataGridView1.TabIndex = 11;
             // 
             // button1
@@ -159,7 +159,7 @@ namespace Lab2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 292);
+            this.ClientSize = new System.Drawing.Size(1214, 292);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox1);
