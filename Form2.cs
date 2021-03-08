@@ -16,8 +16,11 @@ namespace Lab2
         List<Alquiler> pre = new List<Alquiler>();
         List<Cliente> per = new List<Cliente>();
         List<Automovil> au = new List<Automovil>();
+        List<total> tot = new List<total>();
         Boolean h = false;
+        Boolean h2 = false;
         int c = 0;
+        int c2 = 1;
         public Form2()
         {
             InitializeComponent();
@@ -42,7 +45,7 @@ namespace Lab2
             reader.Close();
 
             comboBox1.DisplayMember = "NIT";
-            comboBox1.ValueMember = "Nombre";
+            comboBox1.ValueMember = "NIT";
 
             comboBox1.DataSource = null;
             comboBox1.DataSource = per;
@@ -69,7 +72,7 @@ namespace Lab2
             reader.Close();
 
             comboBox2.DisplayMember = "Placa";
-            comboBox2.ValueMember = "Modelo";
+            comboBox2.ValueMember = "Placa";
 
             comboBox2.DataSource = null;
             comboBox2.DataSource = au;
@@ -79,6 +82,8 @@ namespace Lab2
         void agregar()
         {
             Alquiler c = new Alquiler();
+            Automovil s = new Automovil();
+
             c.Nit = comboBox1.SelectedValue.ToString();
             c.Placa = comboBox2.SelectedValue.ToString();
             c.Fecha_al = dateTimePicker1.Value.ToString();
@@ -100,6 +105,8 @@ namespace Lab2
             }
             write.Close();
         }
+
+        
 
         void leera()
         {
@@ -123,17 +130,20 @@ namespace Lab2
             reader.Close();
         }
 
-        void repetidos()
+       
+
+        void buscarp()
         {
-            while (h == false && c < pre.Count)
+            Automovil t = new Automovil();
+            while (h2 == false && c2 < pre.Count)
             {
-                if (pre[c].Placa.CompareTo(comboBox1.SelectedValue.ToString()) == 0)
+                if (pre[c].Placa.CompareTo(Convert.ToInt32(comboBox1.SelectedValue.ToString()))==0)
                 {
-                    h = true;
+                    h2 = true;
                 }
                 else
                 {
-                    c++;
+                    c2++;
                 }
             }
         }
@@ -145,28 +155,38 @@ namespace Lab2
             leera();
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(textBox1.Text))
             {
-                agregar();
-                repetidos();
                 Alquiler f = new Alquiler();
-
-                f.Nit = comboBox1.SelectedValue.ToString();
-                f.Placa = comboBox2.SelectedValue.ToString();
-                f.Fecha_al = dateTimePicker1.Value.ToString();
-                f.Fecha_de = dateTimePicker2.Value.ToString();
-                f.Kilrecorridos = Convert.ToDouble(textBox1.Text);
-                pre.Add(f);
-                MessageBox.Show("Se ha agregado a la base de datos");
-                textBox1.Clear();
-                escribira();
+                Automovil s = new Automovil();
+                agregar();
+                
+                    f.Nit = comboBox1.SelectedValue.ToString();
+                    f.Placa = comboBox2.SelectedValue.ToString();
+                    f.Fecha_al = dateTimePicker1.Value.ToString();
+                    f.Fecha_de = dateTimePicker2.Value.ToString();
+                    f.Kilrecorridos = Convert.ToDouble(textBox1.Text);
+                    
+                    pre.Add(f);
+                    MessageBox.Show("Se ha agregado a la base de datos");
+                    textBox1.Clear();
+                    escribira();
             }
             else
             {
                 MessageBox.Show("Debe de llenar todos los campos");
             }
+           
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+
         }
     }
 }
