@@ -1,0 +1,25 @@
+2102
+Toyota
+Rav-4
+Gris
+50
+1234
+Mazda
+Honda
+Negro
+25
+7896
+Toyota
+Rush
+Corinto
+65
+5963
+Hyundai
+Santa Fe
+Corinta
+68
+7894
+Toyota
+2001
+Negro
+150
