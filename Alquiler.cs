@@ -8,6 +8,8 @@ namespace Lab2
 {
     class Alquiler
     {
+        string nit;
+        string placa;
         string fecha_al;
         string fecha_de;
         double kilrecorridos;
@@ -15,5 +17,7 @@ namespace Lab2
         public string Fecha_al { get => fecha_al; set => fecha_al = value; }
         public string Fecha_de { get => fecha_de; set => fecha_de = value; }
         public double Kilrecorridos { get => kilrecorridos; set => kilrecorridos = value; }
+        public string Nit { get => nit; set => nit = value; }
+        public string Placa { get => placa; set => placa = value; }
     }
 }

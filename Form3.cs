@@ -63,9 +63,65 @@ namespace Lab2
             reader.Close();
         }
 
+        void repetidos()
+        {
+            while (h == false && c < persona.Count)
+            {
+                if (persona[c].Nit.CompareTo(textBox1.Text)==0)
+                {
+                    h = true;
+                }
+                else
+                {
+                    c++;
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text) && !string.IsNullOrEmpty(textBox3.Text))
+            {
+                agregar();
+                repetidos();
+                Cliente f = new Cliente();
+                if(h)
+                {
+                    MessageBox.Show("El nit ya esta en uso");
+                    textBox1.Clear();
+                }
+                else
+                {
+                    f.Nit = textBox1.Text;
+                    f.Nombre = textBox2.Text;
+                    f.Direccion = textBox3.Text;
+                    persona.Add(f);
+                    MessageBox.Show("Seha agregado correctamente en la base de datos");
+                    textBox1.Clear();
+                    textBox2.Clear();
+                    textBox3.Clear();
+                    escribirc();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe de llenar todos los campos");
+            }
+            h = false;
+            c = 0;
+        }
 
+        private void Form3_Load(object sender, EventArgs e)
+        {
+            leerc();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 f1 = new Form1();
+            Form3 f3 = new Form3();
+            f3.Hide();
+                f1.Show();
         }
     }
 }
