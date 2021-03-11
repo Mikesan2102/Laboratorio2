@@ -101,6 +101,9 @@ namespace Lab2
                     textBox2.Clear();
                     textBox3.Clear();
                     escribirc();
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = persona;
+                    dataGridView1.Refresh();
                 }
             }
             else

@@ -111,6 +111,9 @@ namespace Lab2
                     textBox4.Clear();
                     textBox5.Clear();
                     escribirv();
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = auto;
+                    dataGridView1.Refresh();
                 }
             }
             else

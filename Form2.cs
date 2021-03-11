@@ -20,7 +20,7 @@ namespace Lab2
         Boolean h = false;
         Boolean h2 = false;
         int c = 0;
-        int c2 = 1;
+        int c2 = 0;
         public Form2()
         {
             InitializeComponent();
@@ -135,9 +135,9 @@ namespace Lab2
         void buscarp()
         {
             Automovil t = new Automovil();
-            while (h2 == false && c2 < pre.Count)
+            while (h2 == false && c2 < au.Count)
             {
-                if (pre[c].Placa.CompareTo(Convert.ToInt32(comboBox1.SelectedValue.ToString()))==0)
+                if (au[c2].Placa.CompareTo(comboBox1.SelectedValue.ToString())==0)
                 {
                     h2 = true;
                 }
@@ -148,11 +148,31 @@ namespace Lab2
             }
         }
 
+        void repetidos()
+        {
+            while (h == false && c < pre.Count)
+            {
+                if (pre[c].Placa.CompareTo(comboBox1.SelectedValue.ToString())==0)
+                {
+                    h = true;
+                }
+                else
+                {
+                    c++;
+                }
+            }
+        }
+
         private void Form2_Load(object sender, EventArgs e)
         {
             leernit();
             leerpla();
             leera();
+
+            if (pre.Count > 0)
+            {
+                ordenar();
+            }
         }
 
 
@@ -174,20 +194,63 @@ namespace Lab2
                     MessageBox.Show("Se ha agregado a la base de datos");
                     textBox1.Clear();
                     escribira();
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = pre;
+                dataGridView1.Refresh();
             }
             else
             {
                 MessageBox.Show("Debe de llenar todos los campos");
             }
-           
-            
+
+            if (pre.Count > 0)
+            {
+                ordenar();
+            }
         }
+
+        void ordenar()
+        {
+            label8.Text = " ";
+            pre = pre.OrderByDescending(a => a.Kilrecorridos).ToList();
+            label8.Text = Convert.ToString(pre[0].Kilrecorridos);
+        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
             
 
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            
+                Automovil v = new Automovil();
+                v.Placa = comboBox1.SelectedValue.ToString();
+                buscarp();
+                if (h2)
+                {
+                    repetidos();
+                    if (h)
+                    {
+                        MessageBox.Show("El vehiculo introducido ya esta en renta");
+                       h = true;
+                        c = 0;
+                    }
+                    else
+                    {
+                        h2 = false;
+                        c2 = 0;
+                        c = 0;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vehiculo no encontrado");
+                    c = 0;
+                }
+            }
     }
 }
 
